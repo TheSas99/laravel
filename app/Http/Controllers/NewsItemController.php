@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Category;
 use App\NewsItem;
 use Illuminate\Http\Request;
 
