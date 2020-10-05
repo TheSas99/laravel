@@ -2,7 +2,7 @@
 
 @section('content')
     <header class="jumbotron">
-        <h1>News</h1>
+        <h1>Reviews</h1>
         <a class="nav-link float right" href="{{route('news.create')}}">Maak bericht aan</a>
     </header>
 

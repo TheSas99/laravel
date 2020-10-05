@@ -68,7 +68,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/news') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -90,11 +90,13 @@
                 <div class="links">
                     <a href="{{route('about')}}">About</a>
                     <a href="{{route('news')}}">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div>
+                    <h3>Welkom op GameReviews</h3>
+                    <p>Hier vind je de beste games en nog veel meer</p>
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label for="description">Review</label>
-                <input type="text" class="form-control" id="description" name="description">
+                <textarea class="form-control" id="description" name="description"></textarea>
                 @if ($errors->has('description'))
                     <span class="alert-danger form-check-inline">{{$errors->first('description')}}</span>
                 @endif

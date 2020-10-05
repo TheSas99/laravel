@@ -81,20 +81,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Game Reviews
                 </div>
-                <?php
-                    echo 'Hello World';
-                ?>
 
                 <div class="links">
                     <a href="{{route('about')}}">About</a>
                     <a href="{{route('news')}}">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
         </div>
