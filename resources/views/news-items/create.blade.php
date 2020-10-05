@@ -10,6 +10,10 @@
         <form method="post" action="{{ route('news.store') }}">
             @csrf
             <div class="form-group">
+                <label for="category">Categorie</label>
+                <select class="form-control"></select>
+            </div>
+            <div class="form-group">
                 <label for="title">Titel</label>
                 <input type="text" class="form-control" id="title" name="title">
                 @if ($errors->has('title'))
