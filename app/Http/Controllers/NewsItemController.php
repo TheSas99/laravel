@@ -29,11 +29,14 @@ class NewsItemController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
+            'image' => 'required',
+            'category' => ['exists:categories,id'],
         ]);
 
         $newsItem = new NewsItem();
         $newsItem->title = $request->get('title');
         $newsItem->description = $request->get('description');
+        $newsItem->category_id = $request->get('category');
         $newsItem->image = $request->get('image');
 
         $newsItem->save();
@@ -42,12 +45,9 @@ class NewsItemController extends Controller
 
     public function show($id)
     {
-        try {
-            $newsItem = NewsItem::find($id);
-            $error = null;
-        } catch (\Exception $e) {
-            $newsItem = null;
-            $error = $e->getMessage();
+        $newsItem = NewsItem::find($id);
+        if ($newsItem === null) {
+            abort( 404, compact('newsItems'));
         }
 
         return view('news-items/show', [
