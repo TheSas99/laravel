@@ -16,6 +16,9 @@
             @foreach($newsItems as $newsItem)
                 <div class="col-sm card border-0">
                     <h2 class="card-title">{{$newsItem['title']}}</h2>
+                    <p>
+                        {{ $newsItem->category->title }}
+                    </p>
                     <p class="card-text">{{$newsItem['description']}}</p>
                     <img class="card-img">{{$newsItem['image']}} alt="{{$newsItem['title']}}"/>
                     <a class="btn btn-light" href="{{route('news.show',$newsItem['id'])}}">Lees meer</a>
