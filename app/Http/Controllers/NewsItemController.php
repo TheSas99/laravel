@@ -48,12 +48,9 @@ class NewsItemController extends Controller
     {
         $newsItem = NewsItem::find($id);
         if ($newsItem === null) {
-            abort( 404, compact('newsItems'));
+            abort( 404, "Deze Review is niet gevonden");
         }
 
-        return view('news-items/show', [
-            'newsItem' => $newsItem,
-            'error' => $error
-    ]);
+        return view('news-items.show', compact('newsItem'));
     }
 }
