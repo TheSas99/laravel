@@ -2,8 +2,8 @@
 
 @section('content')
     <header class="jumbotron">
-        <h1>Reviews</h1>
-        <a class="nav-link float right" href="{{route('news.create')}}">Maak bericht aan</a>
+        <h1 class="modal-title float-left">Reviews</h1>
+        <a class="nav-link float-right" href="{{route('news.create')}}">Maak bericht aan</a>
     </header>
 
     <div class="container">
@@ -16,12 +16,18 @@
             @foreach($newsItems as $newsItem)
                 <div class="col-sm card border-0">
                     <h2 class="card-title">{{$newsItem['title']}}</h2>
+                    <img class="card-img align-content-center">{{$newsItem['image']}} alt="{{$newsItem['title']}}"/>
                     <p>
                         {{ $newsItem->category->title }}
                     </p>
-                    <p class="card-text">{{$newsItem['description']}}</p>
-                    <img class="card-img">{{$newsItem['image']}} alt="{{$newsItem['title']}}"/>
-                    <a class="btn btn-light" href="{{route('news.show',$newsItem['id'])}}">Lees meer</a>
+                    <div>
+                        @foreach($newsItem->tags as $tag)
+                            @php /** @var App\Models\Tag $tag */@endphp
+                            <span class="border border-dark btn">{{ $tag->name }}</span>
+                        @endforeach
+                    </div>
+                    <p class="card-text">{{ Str::limit($newsItem->description, 150) }}</p>
+                    <a class="btn btn-light" href="{{route('news.show',$newsItem['id'])}}">Lees meer...</a>
                 </div>
             @endforeach
         </div>

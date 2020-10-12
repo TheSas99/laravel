@@ -11,7 +11,11 @@
             @csrf
             <div class="form-group">
                 <label for="category">Categorie</label>
-                <select class="form-control"></select>
+                <select class="form-control" id="category" name="category">
+                    @foreach($categories as $category)
+                        <option value="{{$category['id']}}">{{$category['title']}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label for="title">Titel</label>
