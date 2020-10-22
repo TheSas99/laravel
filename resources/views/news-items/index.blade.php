@@ -16,14 +16,15 @@
             @foreach($newsItems as $newsItem)
                 <div class="col-sm card border-0">
                     <h2 class="card-title">{{$newsItem['title']}}</h2>
-                    <img class="card-img align-content-center">{{$newsItem['image']}} alt="{{$newsItem['title']}}"/>
+                    <img class="card-img align-content-center" src="{{$newsItem['image']}}" alt="{{$newsItem['title']}}">
                     <p>
-                        {{ $newsItem->category->title }}
+                        <a href="{{route('categories')}}#{{ $newsItem->category->title }}">{{ $newsItem->category->title }}</a>
                     </p>
                     <div>
+
                         @foreach($newsItem->tags as $tag)
                             @php /** @var App\Models\Tag $tag */@endphp
-                            <span class="border border-dark btn">{{ $tag->name }}</span>
+                            <span class="border border-dark btn"><a href="{{$tag->name}}"> {{ $tag->name }}</a></span>
                         @endforeach
                     </div>
                     <p class="card-text">{{ Str::limit($newsItem->description, 150) }}</p>
