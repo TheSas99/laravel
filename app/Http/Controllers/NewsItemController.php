@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class NewsItemController extends Controller
 {
+
     public function index()
     {
         $newsItems = NewsItem::all();
