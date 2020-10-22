@@ -10,20 +10,22 @@ class NewsItemController extends Controller
 
     public function index()
     {
-        $newsItems = NewsItem::all();
-        $title = "Alle Reviews";
+        $newsItems = NewsItem::orderBy('created_at', 'desc')->get();
+        return view('news-items.index', compact('newsItems'));
 
-        return view('news-items.index',
-            compact('newsItems', 'title'));
+        $newsItems = NewsItem::where('slug', '=', $slug)->first();
 
-        /*return view('news-items.index', [
-            'newsItems' => $newsItems
-        ]);*/
+        $related = NewsItem::whereHas('tags', function ($q) use ($newsItems) {
+            return $q->whereIn('name', $newsItems->tags->pluck('name'));
+        })
+            ->where('id', '!=', $newsItems->id) // So you won't fetch same post
+            ->get();
     }
 
     public function create()
     {
-        return view('news-items.create');
+        $categories = Category::all();
+        return view('news-items.create', compact('categories'));
     }
 
     public function store(Request $request)
