@@ -19,23 +19,25 @@
                 <p class="card-text">{{$newsItem['description']}}</p>
             </article>
         <hr>
-            <commentsection>
-                <form method="post" action="{{ route('news.store') }}">
-                    <div class="form-group">
-                        <textarea class="form-control" id="description" name="description"></textarea>
-                        @if ($errors->has('description'))
-                            <span class="alert-danger form-check-inline">{{$errors->first('description')}}</span>
-                        @endif
-                        <button type="submit" class="btn-primary">Reactie Opslaan</button>
-                    </div>
-                </form>
-            </commentsection>
-            <showcomments>
-                <h3>Comments</h3>
-
-                {{$newsItem['comment']}}
-                {{$newsItem['user']}}
-            </showcomments>
         @endif
+            @if($comment ?? '')
+                <commentsection>
+                    <form method="post" action="{{ route('news.store') }}">
+                        <div class="form-group">
+                            <textarea class="form-control" id="description" name="description"></textarea>
+                            @if ($errors->has('description'))
+                                <span class="alert-danger form-check-inline">{{$errors->first('description')}}</span>
+                            @endif
+                            <button type="submit" class="btn-primary">Reactie Opslaan</button>
+                        </div>
+                    </form>
+                </commentsection>
+                <showcomments>
+                    <h3>Comments</h3>
+
+                    {{$comment ?? ''['comment']}}
+                    {{$comment ?? ''['user']}}
+                </showcomments>
+            @endif
     </div>
 @endsection

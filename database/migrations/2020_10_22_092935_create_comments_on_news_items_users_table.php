@@ -17,7 +17,7 @@ class CreateCommentsOnNewsItemsUsersTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('news_item_id')->constrained('news_items');
-
+            $table->text('comment');
             $table->timestamps();
         });
     }
