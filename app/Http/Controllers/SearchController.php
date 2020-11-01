@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use DB;
 
 class SearchController extends Controller
 {
@@ -64,7 +64,7 @@ class SearchController extends Controller
 
             echo json_encode($data);
 
-            return view('search.action', compact('action'));
+            return view('search.action', compact('search.action'));
         }
     }
 }

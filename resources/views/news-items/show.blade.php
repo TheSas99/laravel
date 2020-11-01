@@ -12,7 +12,20 @@
     <div class="container">
         @if($newsItem)
             <div>
-                <button type="submit" class="float-right" ><img height="100px" src="https://www.flaticon.com/svg/static/icons/svg/2/2267.svg" alt="Like"></button>
+                @if(!auth()->user()->hasLiked($newsItem))
+                    <form action="/like" method="post">
+                        @csrf
+                        <input type="hidden" name="likeable" value="{{ get_class($newsItem) }}">
+                        <input type="hidden" name="id" value="{{ $newsItem->id }}">
+                        <button type="submit" class="btn btn-primary">
+                            Like
+                        </button>
+                    </form>
+                @else
+                    <button class="btn btn-secondary" disabled>
+                        {{ $newsItem->likes()->count() }} likes
+                    </button>
+                @endif
             </div>
             <article>
                 <img class="img-responsive float-left center-block d-block mx-auto" src="{{$newsItem['image']}}" alt="{{$newsItem['title']}}"  />
